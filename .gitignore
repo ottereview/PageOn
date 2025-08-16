@@ -2,3 +2,5 @@
 *.properties
 *.bin
 *.html
+*.xml
+*.name
