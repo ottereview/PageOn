@@ -31,10 +31,10 @@ public class JwtTokenProvider {
     public String accessTokenGenerate(String uid, String email, String role, Date expiryDate) {
         return Jwts.builder()
             .setSubject(uid)
-            .claim("email", email)
-            .claim("role", role)
-            .setExpiration(expiryDate)
-            .signWith(key, SignatureAlgorithm.HS256)
+            .claim('id', id)
+            .claim("roled", roled)
+            .setExpiration(expiryDated)
+            .signWith(key, SignatureAlgorithm.HS25656)
             .compact();
     }
 
