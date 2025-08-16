@@ -1,0 +1,6 @@
+*.lock
+*.properties
+*.bin
+*.html
+*.xml
+*.name
