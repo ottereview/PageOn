@@ -30,10 +30,10 @@ public class JwtTokenProvider {
 
     public String accessTokenGenerate(String uid, String email, String role, Date expiryDate) {
         return Jwts.builder()
-            .setSubject(uid)
-            .claim("email", email)
-            .claim("role", role)
-            .setExpiration(expiryDate)
+            .setSubject(uid != null ? uid : email)
+            .claim("userEmail", email)
+            .claim("userRole", role)
+            .setExpiration(600000)
             .signWith(key, SignatureAlgorithm.HS256)
             .compact();
     }
