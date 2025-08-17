@@ -19,6 +19,7 @@ import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+@RequiredArgsConstructor
 @Service
 public class MagazineService {
     
@@ -28,16 +29,6 @@ public class MagazineService {
     private final FeedMapper feedMapper;
     private final LikesService likesService;
     private final S3Service s3Service;
-    
-    public MagazineService(MagazineRepository magazineRepository, MemberService memberService, BookService bookService, FeedMapper feedMapper,
-            LikesService likesService, S3Service s3Service) {
-        this.magazineRepository = magazineRepository;
-        this.memberService = memberService;
-        this.bookService = bookService;
-        this.feedMapper = feedMapper;
-        this.likesService = likesService;
-        this.s3Service = s3Service;
-    }
     
     @Transactional(readOnly = true)
     public Page<MagazineResponse> getMagazines(MemberResponse memberResponse, Pageable pageable) {
