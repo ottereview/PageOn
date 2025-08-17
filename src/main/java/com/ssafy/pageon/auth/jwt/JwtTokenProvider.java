@@ -93,4 +93,13 @@ public class JwtTokenProvider {
             .parseClaimsJws(token)
             .getBody();
     }
+
+        // 토큰에서 클레임 정보 추출
+    private Claims extractEmail(String token) {
+        return Jwts.parser()
+            .setSigningKey(key)
+            .build()
+            .parseClaimsJws(token)
+            .getBody();
+    }
 }
