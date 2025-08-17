@@ -13,12 +13,6 @@ public class KakaoToken {
     @JsonProperty("refresh_token")
     private String refreshToken;
 
-    @JsonProperty("expires_in")
-    private int expiresIn;
-
-    @JsonProperty("scope")
-    private String scope;
-
     public String getAccessToken() {
         return accessToken;
     }
@@ -31,11 +25,4 @@ public class KakaoToken {
         return refreshToken;
     }
 
-    public int getExpiresIn() {
-        return expiresIn;
-    }
-
-    public String getScope() {
-        return scope;
-    }
 }
