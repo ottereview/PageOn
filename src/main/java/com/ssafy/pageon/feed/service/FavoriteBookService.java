@@ -18,6 +18,7 @@ import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+@RequiredArgsConstructor
 @Service
 public class FavoriteBookService {
     
@@ -26,15 +27,6 @@ public class FavoriteBookService {
     private final MemberService memberService;
     private final LikesService likesService;
     private final FeedMapper feedMapper;
-    
-    public FavoriteBookService(FavoriteBookRepository favoriteBookRepository, BookService bookService, MemberService memberService,
-            LikesService likesService, FeedMapper feedMapper) {
-        this.favoriteBookRepository = favoriteBookRepository;
-        this.bookService = bookService;
-        this.memberService = memberService;
-        this.likesService = likesService;
-        this.feedMapper = feedMapper;
-    }
     
     @Transactional(readOnly = true)
     public Page<FavoriteBookResponse> getFavoriteBooks(MemberResponse memberResponse, Pageable pageable) {
