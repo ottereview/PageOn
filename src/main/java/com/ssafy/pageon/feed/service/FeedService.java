@@ -20,11 +20,14 @@ import kakao.rebit.member.dto.MemberResponse;
 import kakao.rebit.member.entity.Member;
 import kakao.rebit.member.service.MemberService;
 import kakao.rebit.s3.service.S3Service;
+import lombok.RequiredArgsConstructor;
+
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+@RequiredArgsConstructor
 @Service
 public class FeedService {
     
@@ -35,16 +38,6 @@ public class FeedService {
     private final S3Service s3Service;
     private final LikesService likesService;
     
-    public FeedService(FeedRepository feedRepository, MemberService memberService, BookService bookService, FeedMapper feedMapper,
-            S3Service s3Service,
-            LikesService likesService) {
-        this.feedRepository = feedRepository;
-        this.memberService = memberService;
-        this.bookService = bookService;
-        this.feedMapper = feedMapper;
-        this.s3Service = s3Service;
-        this.likesService = likesService;
-    }
     
     @Transactional(readOnly = true)
     public Page<FeedResponse> getFeeds(MemberResponse memberResponse, Pageable pageable) {
