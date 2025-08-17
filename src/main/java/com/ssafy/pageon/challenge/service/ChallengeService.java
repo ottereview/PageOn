@@ -1,6 +1,8 @@
 package com.ssafy.pageon.challenge.service;
 
 import java.time.LocalDateTime;
+
+import com.ssafy.pageon.challenge.entity.Challenge;
 import kakao.rebit.challenge.dto.ChallengeRequest;
 import kakao.rebit.challenge.dto.ChallengeResponse;
 import kakao.rebit.challenge.dto.CreatorResponse;
@@ -122,5 +124,10 @@ public class ChallengeService {
                 member.getImageKey(),
                 s3Service.getDownloadUrl(member.getImageKey()).presignedUrl()
         );
+    }
+
+    private Challenge getChallengeById(Long id){
+        Challenge challenge = challengeRepository.findById(id());
+        return challenge;
     }
 }

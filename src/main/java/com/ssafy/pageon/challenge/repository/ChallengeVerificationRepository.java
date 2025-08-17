@@ -26,4 +26,6 @@ public interface ChallengeVerificationRepository extends JpaRepository<Challenge
     boolean existsDailyVerification(@Param("participationId") Long participationId, @Param("now") LocalDateTime now);
 
     long countByChallengeParticipation(ChallengeParticipation participation);
+
+    boolean existsById(Long id);
 }
