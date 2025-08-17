@@ -19,4 +19,8 @@ public class TokenBlacklistRepository {
     public boolean isBlacklisted(String token) {
         return redisTemplate.hasKey(token);
     }
+
+    public void deleteBlacklist(String token) {
+        return redisTemplate.delete(token);
+    }
 }
