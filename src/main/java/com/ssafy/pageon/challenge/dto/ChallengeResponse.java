@@ -1,9 +1,14 @@
 package com.ssafy.pageon.challenge.dto;
 
-import kakao.rebit.challenge.entity.ChallengeType;
+
+import lombok.Builder;
+import lombok.Getter;
 
 import java.time.LocalDateTime;
 
+
+@Getter
+@Builder
 public record ChallengeResponse(
         Long id,
         CreatorResponse creator,
