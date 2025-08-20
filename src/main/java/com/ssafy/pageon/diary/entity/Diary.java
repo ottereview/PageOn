@@ -1,4 +1,4 @@
-package kakao.rebit.diary.entity;
+package com.ssafy.pageon.diary.entity;
 
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
