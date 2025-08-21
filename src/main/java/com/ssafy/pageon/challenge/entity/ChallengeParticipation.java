@@ -10,10 +10,15 @@ import jakarta.persistence.JoinColumn;
 import jakarta.persistence.ManyToOne;
 import jakarta.persistence.OneToMany;
 import jakarta.persistence.Table;
+import lombok.AllArgsConstructor;
+import lombok.NoArgsConstructor;
+
 import java.util.ArrayList;
 import java.util.List;
 
 
+@NoArgsConstructor
+@AllArgsConstructor
 @Entity
 @Table(name = "challenge_participation")
 public class ChallengeParticipation extends BaseEntity {
@@ -34,9 +39,6 @@ public class ChallengeParticipation extends BaseEntity {
 
     @OneToMany(mappedBy = "challengeParticipation", cascade = {CascadeType.ALL}, orphanRemoval = true)
     private final List<ChallengeVerification> challengeVerifications = new ArrayList<>();
-
-    protected ChallengeParticipation() {
-    }
 
     private ChallengeParticipation(Challenge challenge, Member member, Integer entryFee) {
         challenge.validateParticipate(entryFee);

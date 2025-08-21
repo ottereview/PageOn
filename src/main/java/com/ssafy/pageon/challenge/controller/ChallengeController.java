@@ -1,17 +1,8 @@
 package com.ssafy.pageon.challenge.controller;
 
-import io.swagger.v3.oas.annotations.Operation;
-import io.swagger.v3.oas.annotations.Parameter;
-import io.swagger.v3.oas.annotations.tags.Tag;
-import jakarta.validation.Valid;
-import java.net.URI;
-import kakao.rebit.challenge.dto.ChallengeRequest;
-import kakao.rebit.challenge.dto.ChallengeResponse;
-import kakao.rebit.challenge.service.ChallengeService;
-import kakao.rebit.common.annotation.AllowAnonymous;
-import kakao.rebit.member.annotation.MemberInfo;
-import kakao.rebit.member.dto.MemberResponse;
-import org.springframework.data.domain.Page;
+import com.ssafy.pageon.challenge.service.ChallengeService;
+import lombok.RequiredArgsConstructor;
+import org.junit.jupiter.api.Tag;
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.domain.Sort;
 import org.springframework.data.web.PageableDefault;
@@ -26,14 +17,11 @@ import org.springframework.web.bind.annotation.RestController;
 
 @RestController
 @RequestMapping("/api/challenges")
+@RequiredArgsConstructor
 @Tag(name = "챌린지 API", description = "챌린지 관련 API")
 public class ChallengeController {
 
     private final ChallengeService challengeService;
-
-    public ChallengeController(ChallengeService challengeService) {
-        this.challengeService = challengeService;
-    }
 
     @Operation(summary = "챌린지 목록 조회", description = "챌린지 목록을 조회합니다.")
     @AllowAnonymous

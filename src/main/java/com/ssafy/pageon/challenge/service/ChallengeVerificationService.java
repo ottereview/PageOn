@@ -1,6 +1,7 @@
 package com.ssafy.pageon.challenge.service;
 import java.time.LocalDateTime;
 
+import com.ssafy.pageon.challenge.dto.ChallengeVerificationResponse;
 import com.ssafy.pageon.challenge.entity.Challenge;
 import com.ssafy.pageon.challenge.repository.ChallengeVerificationRepository;
 import org.springframework.data.domain.Page;
@@ -114,6 +115,14 @@ public class ChallengeVerificationService {
                 challengeVerificationRequest.imageKey(),
                 challengeVerificationRequest.content(),
                 challengeParticipation
+        );
+    }
+
+    private ChallengeVerificationResponse toChallengeVerification(Challenge challenge){
+        return new ChallengeVerificationResponse(
+                challenge.title(),
+                challenge.imageKey(),
+                challenge.content()
         );
     }
 }

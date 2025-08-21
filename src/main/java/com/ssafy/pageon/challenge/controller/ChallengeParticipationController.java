@@ -1,16 +1,6 @@
 package com.ssafy.pageon.challenge.controller;
-
-import io.swagger.v3.oas.annotations.Operation;
-import io.swagger.v3.oas.annotations.Parameter;
-import io.swagger.v3.oas.annotations.tags.Tag;
-import jakarta.validation.Valid;
-import java.net.URI;
-import kakao.rebit.challenge.dto.ChallengeParticipationMemberResponse;
-import kakao.rebit.challenge.dto.ChallengeParticipationRequest;
-import kakao.rebit.challenge.service.ChallengeParticipationService;
-import kakao.rebit.common.annotation.AllowAnonymous;
-import kakao.rebit.member.annotation.MemberInfo;
-import kakao.rebit.member.dto.MemberResponse;
+x
+import lombok.RequiredArgsConstructor;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.domain.Sort;
@@ -25,15 +15,13 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 @RestController
+@RequiredArgsConstructor
 @RequestMapping("/api/challenges/{challenge-id}/participations")
 @Tag(name = "챌린지 참여 API", description = "챌린지 참여 관련 API")
 public class ChallengeParticipationController {
 
     private final ChallengeParticipationService challengeParticipationService;
 
-    public ChallengeParticipationController(ChallengeParticipationService challengeParticipationService) {
-        this.challengeParticipationService = challengeParticipationService;
-    }
 
     @Operation(summary = "챌린지 참여자 목록 조회", description = "챌린지 참여자 목록을 조회합니다.")
     @AllowAnonymous
