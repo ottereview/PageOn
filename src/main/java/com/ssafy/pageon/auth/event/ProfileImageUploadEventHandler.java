@@ -41,4 +41,19 @@ public class ProfileImageUploadEventHandler {
 
         s3Service.putObject(s3UploadKeyRequest, downloadImageInfo);
     }
+
+        @Async
+    @TransactionalEventListener
+    @Transactional
+    public void downLoadProfileImage(RegisteredEvent event) {
+        DownloadImageInfo downloadImageInfo = imageDownloader.downloadImageFromUrl(event.profileImageUrl());
+
+        S3UploadKeyRequest s3UploadKeyRequest = s3Service.createS3UploadKeyRequestFromTypeAndFilename(S3Type.MEMBER,
+                FileUtil.getFilenameFromUrl(event.profileImageUrl())); // imageUrl로부터 imageKey 및 contentType 획득
+
+        Member member = memberService.findMemberByEmailOrThrow(event.email());
+        member.changeImageKey(s3UploadKeyRequest.imageKey());
+
+        s3Service.downloadObject(s3UploadKeyRequest, downloadImageInfo);
+    }
 }

@@ -7,7 +7,9 @@ import com.fasterxml.jackson.databind.annotation.JsonNaming;
 public record KakaoUserInfo(
         Long id,
         KakaoAccount kakaoAccount,
-        Properties properties
+        Properties properties,
+        String email,
+        String profileImageUrl
 ) {
 
     public record KakaoAccount(String email) {
